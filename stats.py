@@ -9,7 +9,7 @@ def letter_count(text):
     letters = {}
     for (i, c) in enumerate(text.lower()):
         if c not in letters:
-            letters[c] = 1
+            letters[c] = 0
         if c in letters:
             letters[c] += 1
     print(letters)
