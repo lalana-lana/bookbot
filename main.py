@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-from stats import word_count, letter_count
+from stats import (
+    word_count,
+    sorted_letters,
+    letter_count)
 def main():
     path_to_file = "books/frankenstein.txt"
     text = get_book_text(path_to_file)
     words = word_count(text)
     letters = letter_count(text)
+    chars_list = sorted_letters(letters)
     print_report(path_to_file, words, chars_list)
 
 def get_book_text(path_to_file):
