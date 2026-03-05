@@ -1,20 +1,24 @@
 #!/usr/bin/env python3
+import sys
 from stats import (
     word_count,
     sorted_letters,
     letter_count)
+
 def main():
-    path_to_file = "books/frankenstein.txt"
-    text = get_book_text(path_to_file)
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    path = sys.argv[1]
+    text = get_book_text(path)
     words = word_count(text)
     letters = letter_count(text)
     chars_list = sorted_letters(letters)
-    print_report(path_to_file, words, chars_list)
+    print_report(sys.argv[1], words, chars_list)
 
-def get_book_text(path_to_file):
-	with open(path_to_file) as f:
-		contents = f.read()
-	return contents
+def get_book_text(path):
+	with open(path) as f:
+		return f.read()
 
 def print_report(path_to_file, words, chars_list):
     print("======== BOOKBOT ========")
@@ -28,5 +32,6 @@ def print_report(path_to_file, words, chars_list):
         print(f"{item['char']}: {item['num']}")
 
     print("======== END ========")
+
 
 main()
